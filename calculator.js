@@ -8,6 +8,7 @@ const display = document.getElementById('display');
 const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
 function playTone(freq = 600, duration = 0.06, volume = 0.08) {
+  if (audioCtx.state === 'suspended') audioCtx.resume();
   const oscillator = audioCtx.createOscillator();
   const gainNode = audioCtx.createGain();
 
